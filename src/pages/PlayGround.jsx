@@ -1,17 +1,13 @@
 import GradientBase from '../components/GradientBase';
-import Star from '../assets/star.svg?react';
-import Press from '../assets/press.svg?react';
-import Humburger from '../assets/humburger.svg?react';
-import Spark1 from '../assets/spark1.svg?react';
-import bubble1 from '../assets/bubble1.png';
+import RenderImageAsset from '../components/RenderImageAsset';
 const PlayGround = () => {
 	return (
 		<div style={{ display: 'flex', gap: '30px' }}>
-			<Star />
-			<Press />
-			<Humburger />
-			<Spark1 />
-			<img src={bubble1} />
+			<RenderImageAsset name={'star.svg'} />
+			<RenderImageAsset name={'press.svg'} />
+			<RenderImageAsset name={'humburger.svg'} />
+			<RenderImageAsset name={'spark1.svg'} />
+			<RenderImageAsset name={'bubble1.png'} />
 			<GradientBase
 				borderSize='1.5'
 				borderRadius='72px'

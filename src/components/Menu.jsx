@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import GradientBase from './GradientBase';
 import './Menu.scss';
 import { useLayoutContext } from '../contexts/LayoutContext';
-import Humburger from '../assets/humburger.svg?react';
+import RenderImageAsset from './RenderImageAsset';
 
 const menuItems = [
 	{
@@ -29,7 +29,7 @@ const Menu = () => {
 	));
 	return (
 		<GradientBase className={`menu ${deviceMode || ''}`} borderSize='2' borderRadius='290px' innerTransparent>
-			{deviceMode === 'mobile' ? <Humburger className='menu-item selected' /> : menuItemsRender}
+			{deviceMode === 'mobile' ? <RenderImageAsset name={'humburger.svg'} className='menu-item selected' /> : menuItemsRender}
 		</GradientBase>
 	);
 };

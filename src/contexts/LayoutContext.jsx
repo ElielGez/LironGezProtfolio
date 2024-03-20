@@ -3,7 +3,7 @@ import { isTablet } from 'react-device-detect';
 import Menu from '../components/Menu';
 import ContactMeButton from '../components/ContactMeButton';
 import BottomMenu from '../components/BottomMenu';
-import rotateTablet from '../assets/rotate-tablet.png';
+import RenderImageAsset from '../components/RenderImageAsset';
 
 const LayoutContext = createContext({});
 const MOBILE_BREAKPOINT = 800;
@@ -52,7 +52,7 @@ const LayoutContextProvider = ({ children }) => {
 		<LayoutContext.Provider value={{ deviceMode }}>
 			{orientation === 'portrait' && deviceMode === 'tablet' ? (
 				<div>
-					<img src={rotateTablet} />
+					<RenderImageAsset name={'rotate-tablet.png'} />
 				</div>
 			) : (
 				<>

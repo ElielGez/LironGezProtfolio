@@ -1,16 +1,15 @@
 import GradientBase from './GradientBase';
 import './BottomMenu.scss';
-import Linkedin from '../assets/linkedin.svg?react';
-import Gmail from '../assets/gmail.svg?react';
 import constants from '../util/constants';
+import RenderImageAsset from './RenderImageAsset';
 
 const menuItems = [
 	{
-		name: <Linkedin />,
+		name: <RenderImageAsset name={'linkedin.svg'} />,
 		onClick: () => window.open(constants.myLinkedin),
 	},
 	{
-		name: <Gmail />,
+		name: <RenderImageAsset name={'gmail.svg'} />,
 		onClick: () => window.open(constants.myEmail),
 	},
 ];

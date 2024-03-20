@@ -1,13 +1,8 @@
 import './Home.scss';
-import Star from '../assets/star.svg?react';
-import Spark1 from '../assets/spark1.svg?react';
-import Spark2 from '../assets/spark2.svg?react';
-import One from '../assets/1.svg?react';
-import Two from '../assets/2.svg?react';
-import Three from '../assets/3.svg?react';
 import GradientBase from '../components/GradientBase';
 import ContactMeButton from '../components/ContactMeButton';
 import { useLayoutContext } from '../contexts/LayoutContext';
+import RenderImageAsset from '../components/RenderImageAsset';
 
 const Home = () => {
 	const { deviceMode } = useLayoutContext();
@@ -15,23 +10,23 @@ const Home = () => {
 		{
 			title: 'Step 1: Product design Research',
 			text: 'This initial step involves a systematic and thorough exploration of the market landscape, user needs, and existing solutions.',
-			icon: <One />,
+			icon: <RenderImageAsset name={'1.svg'} />,
 		},
 		{
 			title: 'Step 2: Design planning & wireframes',
 			text: 'The second step involves defining the goal, and planning the architecture and information hierarchy and creating the wireframes.',
-			icon: <Two />,
+			icon: <RenderImageAsset name={'2.svg'} />,
 		},
 		{
 			title: 'Step 3: UI design in figma',
 			text: 'The third step involves the final design- clean and minimalistic design and intuitive prototyping. ',
-			icon: <Three />,
+			icon: <RenderImageAsset name={'3.svg'} />,
 		},
 	];
 	return (
 		<div className='home'>
 			<div className='intro padding-left'>
-				<Spark2 className='big-title-with-spark' />
+				<RenderImageAsset name={'spark2.svg'} className='big-title-with-spark' />
 				<div className='hey'>Hi, I’m Liron</div>
 				<h1 className='ux-ui'>UX/UI designer</h1>
 				<h4 className='design'>Design for the magic of a user-first experience, combined with clean and minimalistic design.</h4>
@@ -39,19 +34,19 @@ const Home = () => {
 			</div>
 			<div className='line'></div>
 			<div className='tools'>
-				<Star />
+				<RenderImageAsset name={'star.svg'} />
 				<div>Figma</div>
-				<Star />
+				<RenderImageAsset name={'star.svg'} />
 				<div>Photoshop</div>
-				<Star />
+				<RenderImageAsset name={'star.svg'} />
 				<div>illustrator</div>
-				<Star />
+				<RenderImageAsset name={'star.svg'} />
 			</div>
 			<div className='line'></div>
 			<div className='process padding-left'>
 				<div className='title-with-icon'>
 					<h3>My process to design</h3>
-					<Spark1 />
+					<RenderImageAsset name={'spark1.svg'} />
 				</div>
 				<div className='steps'>
 					{steps.map((step, index) => {
@@ -87,7 +82,7 @@ const Home = () => {
 				<div className='title'>
 					<div className='title-with-icon'>
 						<h3>{`Let's work together!`}</h3>
-						<Spark1 />
+						<RenderImageAsset name={'spark1.svg'} />
 					</div>
 					<h6>If you’re looking for an ambitious designer-I’d like to hear from you!</h6>
 				</div>

@@ -1,15 +1,14 @@
 import ContactMeButton from '../components/ContactMeButton';
-import Spark2 from '../assets/spark2.svg?react';
 import './About.scss';
-import AboutImg from '../assets/about.png';
 import { useLayoutContext } from '../contexts/LayoutContext';
+import RenderImageAsset from '../components/RenderImageAsset';
 
 const About = () => {
 	const { deviceMode } = useLayoutContext();
 	return (
 		<div className='about'>
 			<div className='texts padding-left'>
-				{deviceMode === 'desktop' && <Spark2 className='big-title-with-spark' />}
+				{deviceMode === 'desktop' && <RenderImageAsset name={'spark2.svg'} className='big-title-with-spark' />}
 				<h1>About Me</h1>
 				<h4 className='long-text' style={{ '--n': '800' }}>{`Hi, i’m Liron.
                 UX/UI designer based in Israel.
@@ -28,7 +27,7 @@ I believe that great design can have a positive impact on people's lives, and I�
 I’m highly motivated and looking to join a team who shares the same passion as I do.`}</h4>
 				<ContactMeButton />
 			</div>
-			<img className='image' src={AboutImg} />
+			<RenderImageAsset name={'about.png'} className='image' />
 		</div>
 	);
 };

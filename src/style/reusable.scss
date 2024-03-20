@@ -45,7 +45,8 @@
     .title-with-icon {
         gap: 12px;
 
-        >svg {
+        >svg,
+        img {
             width: 22px;
             height: 22px;
         }
