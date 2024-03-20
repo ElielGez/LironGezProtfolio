@@ -1,0 +1,45 @@
+.header {
+    height: var(--header-height);
+    display: grid;
+    grid-template-columns: 1fr repeat(1, auto) 1fr;
+    grid-column-gap: 10px;
+    justify-items: flex-end;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--background-color);
+    z-index: 1;
+
+    &.mobile {
+        grid-template-columns: none;
+        padding: 0 20px;
+    }
+
+    .menu {
+        grid-column-start: 2;
+    }
+
+    .contact-me-btn {
+        margin-right: 120px;
+    }
+}
+
+.content {
+    margin: auto;
+    margin-top: var(--header-height);
+    max-width: var(--max-width);
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 31px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--background-color);
+}

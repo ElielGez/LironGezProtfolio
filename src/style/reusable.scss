@@ -1,0 +1,53 @@
+.padding-left {
+    padding-left: var(--padding-left);
+}
+
+.title-with-icon {
+    display: flex;
+    gap: 29px;
+    align-items: center;
+}
+
+.big-title-with-spark {
+    position: absolute;
+    right: 271px;
+}
+
+.anim-typewriter {
+    overflow: hidden;
+    // white-space: nowrap;
+    width: 0;
+    animation: typing 3s forwards;
+}
+
+.type {
+    background: linear-gradient(white 0 0) 0 0;
+    background-size: calc(var(--n)*1ch) 200%;
+    background-repeat: no-repeat;
+    animation: t 5s linear alternate;
+}
+
+.clip {
+    color: #0000;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.step {
+    animation-timing-function: steps(var(--n))
+}
+
+@media screen and (max-width: 800px) {
+    .big-title-with-spark {
+        right: 50px;
+    }
+
+    .title-with-icon {
+        gap: 12px;
+
+        >svg {
+            width: 22px;
+            height: 22px;
+        }
+    }
+}

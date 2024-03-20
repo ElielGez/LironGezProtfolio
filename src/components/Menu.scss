@@ -1,0 +1,58 @@
+.menu {
+    $selected-background-color: rgb(41, 41, 41);
+    width: 322px;
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    gap: 10px;
+    transition: width 0.2s ease;
+    user-select: none;
+
+    .menu-item {
+        padding: 8px 16px 8px 16px;
+        border-radius: 40px;
+        cursor: pointer;
+        position: relative;
+
+        >span {
+            position: relative;
+            z-index: 2;
+        }
+
+        &::before {
+            content: "";
+            z-index: 1;
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 100%;
+            top: 0;
+            border-radius: inherit;
+            transition: background-color 0.4s, transform 0.4s;
+            transform: scale(0);
+        }
+
+        &.selected {
+            &::before {
+                transform: scale(1);
+                background-color: $selected-background-color;
+
+            }
+        }
+    }
+
+    &.mobile {
+        width: 49px;
+        height: 37px;
+        padding: 0;
+        justify-content: center;
+
+        .menu-item {
+            height: calc(100% - 4.5 * 2px);
+            padding: 0 15px;
+            background-color: $selected-background-color;
+        }
+    }
+}

@@ -1,0 +1,35 @@
+$border-size: var(--border-size);
+$border-radius: var(--border-radius);
+
+.gradient-base {
+    &.reverse-gradients {
+        background: var(--second-gradient);
+    }
+
+    &.reverse-gradients::before {
+        background: var(--first-gradient);
+    }
+
+    &.inner-transparent {
+        background: var(--background-color);
+    }
+
+    background: var(--first-gradient);
+    border-radius: $border-radius;
+    position: relative;
+    text-align: center;
+    box-sizing: border-box;
+    min-width: 20px;
+}
+
+.gradient-base::before {
+    content: '';
+    border-radius: $border-radius;
+    background-image: var(--second-gradient);
+    top: $border-size;
+    left: $border-size;
+    bottom: $border-size;
+    right: $border-size;
+    position: absolute;
+    z-index: -1;
+}

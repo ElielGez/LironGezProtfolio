@@ -1,0 +1,23 @@
+.bottom-menu {
+    width: 170px;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 13px;
+    gap: 40px;
+
+    .menu-item {
+        width: 52px;
+        height: 36px;
+        border-radius: 40px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.selected {
+            background: rgba(41, 41, 41, 1);
+        }
+    }
+}

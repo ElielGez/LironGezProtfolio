@@ -1,0 +1,22 @@
+.about {
+    position: relative;
+    padding-bottom: 107px;
+
+    .texts {
+        padding-top: 64px;
+        padding-bottom: 113px;
+        max-width: 895px;
+
+        .long-text {
+            white-space: pre-line;
+            padding: 40px 0;
+            // display: inline;
+        }
+    }
+
+    .image {
+        position: absolute;
+        right: 120px;
+        bottom: 200px;
+    }
+}
