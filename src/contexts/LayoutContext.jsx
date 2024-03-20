@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { isTablet } from 'react-device-detect';
+import { isTablet, isMobile } from 'react-device-detect';
 import Menu from '../components/Menu';
 import ContactMeButton from '../components/ContactMeButton';
 import BottomMenu from '../components/BottomMenu';
@@ -8,7 +8,7 @@ import RenderImageAsset from '../components/RenderImageAsset';
 const LayoutContext = createContext({});
 const MOBILE_BREAKPOINT = 800;
 const calculateDeviceModeByWidth = () => {
-	if (window.outerWidth <= MOBILE_BREAKPOINT || window.innerWidth <= MOBILE_BREAKPOINT) return 'mobile';
+	if (window.outerWidth <= MOBILE_BREAKPOINT || window.innerWidth <= MOBILE_BREAKPOINT || isMobile) return 'mobile';
 	else if (isTablet) return 'tablet';
 	return 'desktop';
 };
@@ -50,8 +50,8 @@ const LayoutContextProvider = ({ children }) => {
 	}, []);
 	return (
 		<LayoutContext.Provider value={{ deviceMode }}>
-			{orientation === 'portrait' && deviceMode === 'tablet' ? (
-				<div>
+			{(orientation === 'portrait' && deviceMode === 'tablet') || (orientation === 'landscape' && deviceMode === 'mobile') ? (
+				<div className='rotate-orientation'>
 					<RenderImageAsset name={'rotate-tablet.png'} />
 				</div>
 			) : (
