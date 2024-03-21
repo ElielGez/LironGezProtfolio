@@ -23,6 +23,20 @@ const Home = () => {
 			icon: <RenderImageAsset name={'3.svg'} />,
 		},
 	];
+	const projects = [
+		{
+			title: 'Recipe it',
+			text: 'A convenient application for easily uploading and searching recipes',
+		},
+		{
+			title: 'BabySitter',
+			text: 'Secure app for finding/searching a babysitter',
+		},
+		{
+			title: 'Teperberg',
+			text: 'Vision collection by Teperberg winery',
+		},
+	];
 	return (
 		<div className='home'>
 			<div className='intro padding-left'>
@@ -73,6 +87,24 @@ const Home = () => {
 									<h4>{step.title}</h4>
 									<h5>{step.text}</h5>
 								</div>
+							</div>
+						);
+					})}
+				</div>
+			</div>
+			<div className='projects padding-left'>
+				<div className='title-with-icon'>
+					<h3>Some Featured projects</h3>
+					<RenderImageAsset name={'spark1.svg'} />
+				</div>
+				<div className='boxes'>
+					{projects.map((project, index) => {
+						return (
+							<div className='box' key={index}>
+								<RenderImageAsset className='bubble-icon' name={`bubble${index + 1}.png`} />
+								<h2>{project.title}</h2>
+								<h5>{project.text}</h5>
+								{deviceMode !== 'desktop' && <RenderImageAsset className='press-icon' name={'press.svg'} />}
 							</div>
 						);
 					})}
