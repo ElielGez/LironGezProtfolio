@@ -2,10 +2,11 @@ import './Home.scss';
 import GradientBase from '../components/GradientBase';
 import ContactMeButton from '../components/ContactMeButton';
 import { useLayoutContext } from '../contexts/LayoutContext';
-import RenderImageAsset from '../components/RenderImageAsset';
+import RenderImageAsset, { useRenderImageManifest } from '../components/RenderImageAsset';
 
 const Home = () => {
 	const { deviceMode } = useLayoutContext();
+	const { getAsset } = useRenderImageManifest();
 	const steps = [
 		{
 			title: 'Step 1: Product design Research',
@@ -27,14 +28,17 @@ const Home = () => {
 		{
 			title: 'Recipe it',
 			text: 'A convenient application for easily uploading and searching recipes',
+			backgroundImage: 'reciepe-it-scene.png',
 		},
 		{
 			title: 'BabySitter',
-			text: 'Secure app for finding/searching a babysitter',
+			text: 'Secure app for searching a babysitter',
+			backgroundImage: 'babysitter-scene.png',
 		},
 		{
 			title: 'Teperberg',
 			text: 'Vision collection by Teperberg winery',
+			backgroundImage: 'teperberg-scene.png',
 		},
 	];
 	return (
@@ -105,6 +109,10 @@ const Home = () => {
 								<h2>{project.title}</h2>
 								<h5>{project.text}</h5>
 								{deviceMode !== 'desktop' && <RenderImageAsset className='press-icon' name={'press.svg'} />}
+								<div className='anim-scene'>
+									<RenderImageAsset name={project.backgroundImage} />
+								</div>
+								<div className='scene-gradient'></div>
 							</div>
 						);
 					})}
