@@ -1,3 +1,15 @@
+@mixin anim-scene-animation {
+    .anim-scene {
+        width: 100%;
+        transform: scale(1);
+
+    }
+
+    .scene-gradient {
+        visibility: visible;
+    }
+}
+
 .home {
     .intro {
         padding-top: 64px;
@@ -102,6 +114,10 @@
                 box-sizing: border-box;
                 user-select: none;
 
+                img {
+                    pointer-events: none;
+                }
+
                 >*:not(.anim-scene) {
                     z-index: 1;
                     position: relative;
@@ -139,16 +155,9 @@
                     visibility: hidden;
                 }
 
-                &.active,
-                &:hover {
-                    .anim-scene {
-                        width: 100%;
-                        transform: scale(1);
-
-                    }
-
-                    .scene-gradient {
-                        visibility: visible;
+                @media (hover: hover) and (pointer: fine) {
+                    &:hover {
+                        @include anim-scene-animation;
                     }
                 }
             }
@@ -247,6 +256,10 @@
                         position: absolute;
                         right: 10px;
                         bottom: 10px;
+                    }
+
+                    &.active {
+                        @include anim-scene-animation;
                     }
                 }
             }

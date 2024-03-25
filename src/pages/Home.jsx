@@ -106,7 +106,7 @@ const Home = () => {
 					{projects.map((project, index) => {
 						return (
 							<div
-								className='box'
+								className={`box ${project.title === activeProject ? 'active' : ''}`}
 								key={index}
 								onPointerDown={() => setActiveProject(project.title)}
 								onPointerUp={() => setActiveProject()}>
@@ -114,7 +114,7 @@ const Home = () => {
 								<h2>{project.title}</h2>
 								<h5>{project.text}</h5>
 								{deviceMode !== 'desktop' && <RenderImageAsset className='press-icon' name={'press.svg'} />}
-								<div className={`anim-scene ${project.title === activeProject ? 'active' : ''}`}>
+								<div className={`anim-scene`}>
 									<RenderImageAsset name={project.backgroundImage} />
 								</div>
 								<div className='scene-gradient'></div>
