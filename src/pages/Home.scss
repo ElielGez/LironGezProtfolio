@@ -139,7 +139,7 @@
                     visibility: hidden;
                 }
 
-                &:active,
+                &.active,
                 &:hover {
                     .anim-scene {
                         width: 100%;

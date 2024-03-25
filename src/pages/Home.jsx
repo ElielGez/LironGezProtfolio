@@ -3,10 +3,11 @@ import GradientBase from '../components/GradientBase';
 import ContactMeButton from '../components/ContactMeButton';
 import { useLayoutContext } from '../contexts/LayoutContext';
 import RenderImageAsset, { useRenderImageManifest } from '../components/RenderImageAsset';
+import { useState } from 'react';
 
 const Home = () => {
 	const { deviceMode } = useLayoutContext();
-	const { getAsset } = useRenderImageManifest();
+	const [activeProject, setActiveProject] = useState();
 	const steps = [
 		{
 			title: 'Step 1: Product design Research',
@@ -104,12 +105,16 @@ const Home = () => {
 				<div className='boxes'>
 					{projects.map((project, index) => {
 						return (
-							<div className='box' key={index}>
+							<div
+								className='box'
+								key={index}
+								onPointerDown={() => setActiveProject(project.title)}
+								onPointerUp={() => setActiveProject()}>
 								<RenderImageAsset className='bubble-icon' name={`bubble${index + 1}.png`} />
 								<h2>{project.title}</h2>
 								<h5>{project.text}</h5>
 								{deviceMode !== 'desktop' && <RenderImageAsset className='press-icon' name={'press.svg'} />}
-								<div className='anim-scene'>
+								<div className={`anim-scene ${project.title === activeProject ? 'active' : ''}`}>
 									<RenderImageAsset name={project.backgroundImage} />
 								</div>
 								<div className='scene-gradient'></div>
