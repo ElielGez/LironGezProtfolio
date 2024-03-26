@@ -2,12 +2,27 @@ import './Home.scss';
 import GradientBase from '../components/GradientBase';
 import ContactMeButton from '../components/ContactMeButton';
 import { useLayoutContext } from '../contexts/LayoutContext';
-import RenderImageAsset, { useRenderImageManifest } from '../components/RenderImageAsset';
+import RenderImageAsset from '../components/RenderImageAsset';
 import { useState } from 'react';
+import { useLongPress } from 'use-long-press';
 
 const Home = () => {
 	const { deviceMode } = useLayoutContext();
 	const [activeProject, setActiveProject] = useState();
+	const longPressBind = useLongPress(
+		(event, { context }) => {
+			setActiveProject(context);
+		},
+		{
+			onFinish: () => setActiveProject(),
+			onCancel: () => setActiveProject(),
+			threshold: 100, // In milliseconds
+			captureEvent: true, // Event won't get cleared after React finish processing it
+			cancelOnMovement: 10, // Square side size (in pixels) inside which movement won't cancel long press
+			cancelOutsideElement: true, // Cancel long press when moved mouse / pointer outside element while pressing
+			detect: 'pointer', // Default option
+		},
+	);
 	const steps = [
 		{
 			title: 'Step 1: Product design Research',
@@ -105,11 +120,7 @@ const Home = () => {
 				<div className='boxes'>
 					{projects.map((project, index) => {
 						return (
-							<div
-								className={`box ${project.title === activeProject ? 'active' : ''}`}
-								key={index}
-								onPointerDown={() => setActiveProject(project.title)}
-								onPointerUp={() => setActiveProject()}>
+							<div key={index} className={`box ${project.title === activeProject ? 'active' : ''}`} {...longPressBind(project.title)}>
 								<RenderImageAsset className='bubble-icon' name={`bubble${index + 1}.png`} />
 								<h2>{project.title}</h2>
 								<h5>{project.text}</h5>
