@@ -3,9 +3,26 @@ import GradientBase from '../components/GradientBase';
 import ContactMeButton from '../components/ContactMeButton';
 import { useLayoutContext } from '../contexts/LayoutContext';
 import RenderImageAsset from '../components/RenderImageAsset';
+import { useState } from 'react';
+import { useLongPress } from 'use-long-press';
 
 const Home = () => {
 	const { deviceMode } = useLayoutContext();
+	const [activeProject, setActiveProject] = useState();
+	const longPressBind = useLongPress(
+		(event, { context }) => {
+			setActiveProject(context);
+		},
+		{
+			onFinish: () => setActiveProject(),
+			onCancel: () => setActiveProject(),
+			threshold: 100, // In milliseconds
+			captureEvent: true, // Event won't get cleared after React finish processing it
+			cancelOnMovement: 10, // Square side size (in pixels) inside which movement won't cancel long press
+			cancelOutsideElement: true, // Cancel long press when moved mouse / pointer outside element while pressing
+			detect: 'pointer', // Default option
+		},
+	);
 	const steps = [
 		{
 			title: 'Step 1: Product design Research',
@@ -21,6 +38,23 @@ const Home = () => {
 			title: 'Step 3: UI design in figma',
 			text: 'The third step involves the final design- clean and minimalistic design and intuitive prototyping. ',
 			icon: <RenderImageAsset name={'3.svg'} />,
+		},
+	];
+	const projects = [
+		{
+			title: 'Recipe it',
+			text: 'A convenient application for easily uploading and searching recipes',
+			backgroundImage: 'reciepe-it-scene.png',
+		},
+		{
+			title: 'BabySitter',
+			text: 'Secure app for searching a babysitter',
+			backgroundImage: 'babysitter-scene.png',
+		},
+		{
+			title: 'Teperberg',
+			text: 'Vision collection by Teperberg winery',
+			backgroundImage: 'teperberg-scene.png',
 		},
 	];
 	return (
@@ -73,6 +107,28 @@ const Home = () => {
 									<h4>{step.title}</h4>
 									<h5>{step.text}</h5>
 								</div>
+							</div>
+						);
+					})}
+				</div>
+			</div>
+			<div className='projects padding-left'>
+				<div className='title-with-icon'>
+					<h3>Some Featured projects</h3>
+					<RenderImageAsset name={'spark1.svg'} />
+				</div>
+				<div className='boxes'>
+					{projects.map((project, index) => {
+						return (
+							<div key={index} className={`box ${project.title === activeProject ? 'active' : ''}`} {...longPressBind(project.title)}>
+								<RenderImageAsset className='bubble-icon' name={`bubble${index + 1}.png`} />
+								<h2>{project.title}</h2>
+								<h5>{project.text}</h5>
+								{deviceMode !== 'desktop' && <RenderImageAsset className='press-icon' name={'press.svg'} />}
+								<div className={`anim-scene`}>
+									<RenderImageAsset name={project.backgroundImage} />
+								</div>
+								<div className='scene-gradient'></div>
 							</div>
 						);
 					})}

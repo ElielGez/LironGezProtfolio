@@ -1,7 +1,17 @@
 import { useAssetsManifestContext } from '../contexts/AssetsManifestContext';
-const RenderImageAsset = ({ name, folder = 'general', ...restProps }) => {
+
+export const useRenderImageManifest = () => {
 	const assetsManifest = useAssetsManifestContext();
-	return <img src={assetsManifest[folder][name]} alt={name} {...restProps} />;
+	const getAsset = (name, folder = 'general') => {
+		return assetsManifest[folder][name];
+	};
+	return {
+		getAsset,
+	};
+};
+const RenderImageAsset = ({ name, folder, ...restProps }) => {
+	const { getAsset } = useRenderImageManifest();
+	return <img src={getAsset(name, folder)} alt={name} {...restProps} />;
 };
 
 export default RenderImageAsset;
