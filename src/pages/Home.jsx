@@ -18,7 +18,7 @@ const Home = () => {
 			onCancel: () => setActiveProject(),
 			threshold: 100, // In milliseconds
 			captureEvent: true, // Event won't get cleared after React finish processing it
-			cancelOnMovement: 10, // Square side size (in pixels) inside which movement won't cancel long press
+			cancelOnMovement: 25, // Square side size (in pixels) inside which movement won't cancel long press
 			cancelOutsideElement: true, // Cancel long press when moved mouse / pointer outside element while pressing
 			detect: 'pointer', // Default option
 		},
