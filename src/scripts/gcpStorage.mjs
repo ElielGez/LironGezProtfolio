@@ -13,7 +13,8 @@ export const getStorageMetaData = async () => {
 		};
 		generalContents.forEach(content => {
 			// eslint-disable-next-line no-unused-vars
-			const [_, fileName] = content.Key._text?.split('/') || [];
+			const [_, ...rest] = content.Key._text?.split('/') || [];
+			const fileName = rest.join('/');
 			if (!fileName) return;
 			assetsManifest['general'][fileName] = `${STORAGE_GENERAL_URL}/${content.Key._text}`;
 		});

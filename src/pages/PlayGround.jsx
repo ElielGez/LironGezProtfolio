@@ -41,6 +41,7 @@ const PlayGround = () => {
 				}}>
 				1
 			</GradientBase>
+			<RenderImageAsset style={{ width: '100%' }} name={'persona-tomer.png'} />
 		</div>
 	);
 };

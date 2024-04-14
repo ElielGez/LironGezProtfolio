@@ -28,6 +28,18 @@
   }
 }
 
+.manrope {
+  font-family: "Manrope", sans-serif;
+}
+
+.assistant {
+  font-family: "Assistant", sans-serif;
+}
+
+img {
+  transition: filter 1s ease;
+}
+
 body {
   height: 100vh;
   overflow-y: auto;

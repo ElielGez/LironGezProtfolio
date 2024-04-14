@@ -1,0 +1,31 @@
+.CV {
+    .overlay {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 40px;
+
+        >div {
+            margin-bottom: 37px;
+            text-align: center;
+            cursor: pointer;
+
+            .title {
+                font-size: 10px;
+            }
+        }
+
+    }
+
+    .main-img {
+        width: 800px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .CV {
+        .main-img {
+            width: 100%;
+        }
+    }
+}

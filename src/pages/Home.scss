@@ -12,52 +12,13 @@
 
 .home {
     .intro {
-        padding-top: 64px;
-        padding-bottom: 113px;
-
         .hey {
             font-size: 35px;
             font-weight: 500;
         }
-
-        .ux-ui {
-            padding: 31px 0;
-        }
-
-        .design {
-            padding: 16px 0;
-            max-width: 611px;
-        }
-
-        .contact-me-btn {
-            margin-top: 20px;
-        }
-
-    }
-
-    >.line {
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        position: absolute;
-        right: 0;
-        left: 0;
-        margin: 0.5px 0;
-    }
-
-    .tools {
-        font-size: 20px;
-        padding: 20px 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-right-width: 0;
-        border-left-width: 0;
-        gap: 99px;
-        flex-wrap: wrap;
     }
 
     .process {
-        padding-top: 77px;
-
         .steps {
             padding-top: 58px;
 
@@ -103,6 +64,7 @@
             margin-top: 58px;
 
             .box {
+                cursor: pointer;
                 position: relative;
                 background-color: rgba(21, 21, 21, 1);
                 height: 560px;
@@ -182,41 +144,15 @@
 @media screen and (max-width: 800px) {
     .home {
         .intro {
-            padding-top: 40px;
-            padding-bottom: 79px;
 
             .hey {
                 font-size: 20px;
                 font-weight: 500;
             }
 
-            .ux-ui {
-                padding: 0;
-            }
-
-            .design {
-                padding: 16px 0;
-                max-width: 611px;
-            }
-
-            .contact-me-btn {
-                margin-top: 20px;
-            }
-
-        }
-
-        .tools {
-            gap: 14px;
-            font-size: 12px;
-
-            >svg {
-                width: 18px;
-                height: 18px;
-            }
         }
 
         .process {
-            padding-top: 47px;
 
             .steps {
                 padding-top: 15px;

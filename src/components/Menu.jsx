@@ -11,22 +11,40 @@ const menuItems = [
 	},
 	{
 		name: 'Projects',
-		page: '/projects',
+		page: ['/projects/recipeit', '/projects/babysitter', '/projects/teperberg'],
 	},
 	{
 		name: 'About',
 		page: '/about',
+	},
+	{
+		name: 'CV',
+		page: '/cv',
 	},
 ];
 const Menu = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const { deviceMode } = useLayoutContext();
-	const menuItemsRender = menuItems.map(item => (
-		<div key={item.name} className={`menu-item ${location.pathname === item.page ? 'selected' : ''}`} onClick={() => navigate(item.page)}>
-			<span>{item.name}</span>
-		</div>
-	));
+	const menuItemsRender = menuItems.map(item => {
+		const isArray = Array.isArray(item.page);
+		return (
+			<div
+				key={item.name}
+				className={`menu-item ${
+					(
+						isArray
+							? item.page.some(page => page.includes(location.pathname) && location.pathname.length > 1)
+							: location.pathname === item.page
+					)
+						? 'selected'
+						: ''
+				}`}
+				onClick={() => navigate(Array.isArray(item.page) ? item.page[0] : item.page)}>
+				<span>{item.name}</span>
+			</div>
+		);
+	});
 	return (
 		<GradientBase className={`menu ${deviceMode || ''}`} borderSize='2' borderRadius='290px' innerTransparent>
 			{deviceMode === 'mobile' ? <RenderImageAsset name={'humburger.svg'} className='menu-item selected' /> : menuItemsRender}

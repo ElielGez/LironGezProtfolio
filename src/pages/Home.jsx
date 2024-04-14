@@ -1,13 +1,16 @@
 import './Home.scss';
+import './shared.scss';
 import GradientBase from '../components/GradientBase';
 import ContactMeButton from '../components/ContactMeButton';
 import { useLayoutContext } from '../contexts/LayoutContext';
 import RenderImageAsset from '../components/RenderImageAsset';
 import { useState } from 'react';
 import { useLongPress } from 'use-long-press';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
 	const { deviceMode } = useLayoutContext();
+	const navigate = useNavigate();
 	const [activeProject, setActiveProject] = useState();
 	const longPressBind = useLongPress(
 		(event, { context }) => {
@@ -45,25 +48,28 @@ const Home = () => {
 			title: 'Recipe it',
 			text: 'A convenient application for easily uploading and searching recipes',
 			backgroundImage: 'reciepe-it-scene.png',
+			onClick: () => navigate('/projects/recipeit'),
 		},
 		{
 			title: 'BabySitter',
 			text: 'Secure app for searching a babysitter',
 			backgroundImage: 'babysitter-scene.png',
+			onClick: () => navigate('/projects/babysitter'),
 		},
 		{
 			title: 'Teperberg',
 			text: 'Vision collection by Teperberg winery',
 			backgroundImage: 'teperberg-scene.png',
+			onClick: () => navigate('/projects/teperberg'),
 		},
 	];
 	return (
-		<div className='home'>
+		<div className='home template1'>
 			<div className='intro padding-left'>
 				<RenderImageAsset name={'spark2.svg'} className='big-title-with-spark' />
 				<div className='hey'>Hi, I’m Liron</div>
-				<h1 className='ux-ui'>UX/UI designer</h1>
-				<h4 className='design'>Design for the magic of a user-first experience, combined with clean and minimalistic design.</h4>
+				<h1 className='title'>UX/UI designer</h1>
+				<h4 className='subtitle'>Design for the magic of a user-first experience, combined with clean and minimalistic design.</h4>
 				<ContactMeButton />
 			</div>
 			<div className='line'></div>
@@ -120,7 +126,11 @@ const Home = () => {
 				<div className='boxes'>
 					{projects.map((project, index) => {
 						return (
-							<div key={index} className={`box ${project.title === activeProject ? 'active' : ''}`} {...longPressBind(project.title)}>
+							<div
+								key={index}
+								className={`box ${project.title === activeProject ? 'active' : ''}`}
+								onClick={project.onClick}
+								{...longPressBind(project.title)}>
 								<RenderImageAsset className='bubble-icon' name={`bubble${index + 1}.png`} />
 								<h2>{project.title}</h2>
 								<h5>{project.text}</h5>

@@ -1,5 +1,6 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useLayoutEffect, useState } from 'react';
 import { isTablet, isMobile } from 'react-device-detect';
+import { useLocation } from 'react-router-dom';
 import Menu from '../components/Menu';
 import ContactMeButton from '../components/ContactMeButton';
 import BottomMenu from '../components/BottomMenu';
@@ -16,6 +17,7 @@ const calculateDeviceModeByWidth = () => {
 const LayoutContextProvider = ({ children }) => {
 	const [deviceMode, setDeviceMode] = useState();
 	const [orientation, setOrientation] = useState();
+	const location = useLocation();
 	console.log('LayoutContext : deviceMode', deviceMode);
 	const handleWindowResize = () => {
 		const mode = calculateDeviceModeByWidth();
@@ -48,10 +50,13 @@ const LayoutContextProvider = ({ children }) => {
 			portrait.removeEventListener('change', updateOrientation);
 		};
 	}, []);
+	useLayoutEffect(() => {
+		window.scrollTo(0, 0);
+	}, [location.pathname]);
 	return (
 		<LayoutContext.Provider value={{ deviceMode }}>
 			{(orientation === 'portrait' && deviceMode === 'tablet') || (orientation === 'landscape' && deviceMode === 'mobile') ? (
-				<div className='rotate-orientation'>
+				<div className='centered-absoulte'>
 					<RenderImageAsset name={'rotate-tablet.png'} />
 				</div>
 			) : (

@@ -1,6 +1,6 @@
 .menu {
     $selected-background-color: rgb(41, 41, 41);
-    width: 322px;
+    min-width: 322px;
     height: 55px;
     display: flex;
     justify-content: space-between;
@@ -44,6 +44,7 @@
     }
 
     &.mobile {
+        min-width: 0;
         width: 49px;
         height: 37px;
         padding: 0;
