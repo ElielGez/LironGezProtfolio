@@ -1,10 +1,12 @@
+import './Teperberg.scss';
 import './shared.scss';
-import RenderImageAsset from '../components/RenderImageAsset';
+import RenderImageAsset, { useRenderImageManifest } from '../components/RenderImageAsset';
 import Button from '../components/Button';
 import { useNavigate } from 'react-router-dom';
 
 const Teperberg = () => {
 	const navigate = useNavigate();
+	const { getAsset } = useRenderImageManifest();
 	return (
 		<div className='teperberg template1'>
 			<div className='intro padding-left'>
@@ -55,6 +57,26 @@ const Teperberg = () => {
 						{`"Vision" collection is a youthful and refreshing collection of wines,  produced from vineyards located in the Judean Lowlands
 						For this redesign, the deep color of the high-quality red grapes was chosen, in order to convey the prestige and quality of the wines.`}
 					</h6>
+				</div>
+				<div className='section'>
+					<div className='title-with-icon'>
+						<h3>Web design</h3>
+						<RenderImageAsset name={'spark1.svg'} />
+					</div>
+					<div className='device-bg'>
+						<div className='device-content-bg' style={{ backgroundImage: `url(${getAsset('desktop-teperberg.png')})` }}></div>
+						<RenderImageAsset name={'macbook.png'} />
+					</div>
+				</div>
+				<div className='section'>
+					<div className='title-with-icon'>
+						<h3>Mobile design</h3>
+						<RenderImageAsset name={'spark1.svg'} />
+					</div>
+					<div className='device-bg mobile'>
+						<div className='device-content-bg' style={{ backgroundImage: `url(${getAsset('mobile-teperberg.png')})` }}></div>
+						<RenderImageAsset name={'iphone.png'} />
+					</div>
 				</div>
 				<div className='section'>
 					<div className='title-with-icon'>

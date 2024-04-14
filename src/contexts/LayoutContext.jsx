@@ -18,7 +18,6 @@ const LayoutContextProvider = ({ children }) => {
 	const [deviceMode, setDeviceMode] = useState();
 	const [orientation, setOrientation] = useState();
 	const location = useLocation();
-	console.log('LayoutContext : deviceMode', deviceMode);
 	const handleWindowResize = () => {
 		const mode = calculateDeviceModeByWidth();
 		if (mode === 'mobile') {
