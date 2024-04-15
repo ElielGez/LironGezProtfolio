@@ -58,3 +58,36 @@
         }
     }
 }
+
+.mobile-menu-dialog {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    width: 100%;
+
+    .mobile-menu {
+        background: var(--background-color);
+        color: white;
+        min-height: 470px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+
+        .close-icon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 80px 30px;
+        }
+
+        .items {
+            text-align: center;
+
+            >div {
+                padding: 15px;
+            }
+        }
+    }
+}

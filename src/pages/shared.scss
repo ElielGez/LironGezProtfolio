@@ -119,11 +119,17 @@
     }
 }
 
-
-.persona-dialog {
+dialog {
     border: 0;
     padding: 0;
     outline: none;
+
+    &::backdrop {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+}
+
+.persona-dialog {
     border-radius: 15px;
 
     .close-icon {
@@ -132,10 +138,6 @@
         right: 0;
         padding: 2%;
         cursor: pointer;
-    }
-
-    &::backdrop {
-        background-color: rgba(0, 0, 0, 0.7);
     }
 }
 
@@ -178,9 +180,9 @@
 .illustration1 {
     position: absolute;
     right: 0;
-    bottom: 200px;
+    bottom: 100px;
     z-index: -1;
-    width: 270px;
+    width: 200px;
 }
 
 @media screen and (max-width: 800px) {
@@ -230,5 +232,9 @@
     .persona-container,
     .more-projects {
         flex-direction: column;
+    }
+
+    .illustration1 {
+        width: 100px;
     }
 }

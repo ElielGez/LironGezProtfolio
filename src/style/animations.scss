@@ -15,26 +15,46 @@
 }
 
 dialog[open] {
-    opacity: 1;
-    transform: scale(1);
+    &.pop-fade {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    &.slide-down {
+        transform: scaleY(1);
+    }
 }
 
 /*   Closed state of the dialog   */
 dialog {
-    opacity: 0;
-    transform: scale(0);
-    transition:
-        opacity .5s ease-out,
-        transform .5s ease-out,
-        overlay .5s ease-out allow-discrete,
-        display .5s ease-out allow-discrete;
-    /* Equivalent to
-    transition: all 0.7s allow-discrete; */
+    &.pop-fade {
+        opacity: 0;
+        transform: scale(0);
+        transition:
+            opacity .5s ease-out,
+            transform .5s ease-out,
+            overlay .5s ease-out allow-discrete,
+            display .5s ease-out allow-discrete;
+    }
+
+    &.slide-down {
+        transform: scaleY(0);
+        transition: transform .2s ease-out,
+            overlay .2s ease-out allow-discrete,
+            display .2s ease-out allow-discrete;
+        transform-origin: left top;
+    }
 }
 
 @starting-style {
     dialog[open] {
-        opacity: 0;
-        transform: scale(0);
+        &.pop-fade {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        &.slide-down {
+            transform: scaleY(0);
+        }
     }
 }

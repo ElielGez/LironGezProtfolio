@@ -202,7 +202,7 @@ const Babysitter = () => {
 				</div>
 			</div>
 			<dialog
-				className='persona-dialog'
+				className='persona-dialog pop-fade'
 				ref={dialogRef}
 				onClick={event => {
 					dialogClsoeByBackdrop(dialogRef, event);

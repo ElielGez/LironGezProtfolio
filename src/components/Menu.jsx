@@ -3,6 +3,9 @@ import GradientBase from './GradientBase';
 import './Menu.scss';
 import { useLayoutContext } from '../contexts/LayoutContext';
 import RenderImageAsset from './RenderImageAsset';
+import MenuSelect from './MenuSelect';
+import { useRef } from 'react';
+import { dialogClsoeByBackdrop } from '../util/functions';
 
 const menuItems = [
 	{
@@ -11,7 +14,15 @@ const menuItems = [
 	},
 	{
 		name: 'Projects',
-		page: ['/projects/recipeit', '/projects/babysitter', '/projects/teperberg'],
+		page: '/projects/recipeit',
+		pages: [
+			{
+				label: 'Recipe It',
+				value: '/projects/recipeit',
+			},
+			{ label: 'Babysitter', value: '/projects/babysitter' },
+			{ label: 'Teperberg', value: '/projects/teperberg' },
+		],
 	},
 	{
 		name: 'About',
@@ -26,29 +37,66 @@ const Menu = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const { deviceMode } = useLayoutContext();
+	const dialogRef = useRef();
+	const openDialog = () => {
+		dialogRef.current.showModal();
+	};
+
 	const menuItemsRender = menuItems.map(item => {
-		const isArray = Array.isArray(item.page);
+		const isArray = Array.isArray(item.pages);
 		return (
 			<div
 				key={item.name}
 				className={`menu-item ${
-					(
-						isArray
-							? item.page.some(page => page.includes(location.pathname) && location.pathname.length > 1)
-							: location.pathname === item.page
-					)
-						? 'selected'
-						: ''
-				}`}
-				onClick={() => navigate(Array.isArray(item.page) ? item.page[0] : item.page)}>
-				<span>{item.name}</span>
+					// isArray
+					// 	? item.page.some(page => page.includes(location.pathname) && location.pathname.length > 1)
+					// 	:
+					!isArray && location.pathname === item.page ? 'selected' : ''
+				}${isArray ? ' menu-select' : ''}`}
+				onClick={() => !isArray && navigate(item.page)}>
+				<span>
+					{item.name} {isArray && <RenderImageAsset name='arrow-down.svg' />}
+				</span>
+				{isArray && <MenuSelect items={item.pages} />}
 			</div>
 		);
 	});
 	return (
-		<GradientBase className={`menu ${deviceMode || ''}`} borderSize='2' borderRadius='290px' innerTransparent>
-			{deviceMode === 'mobile' ? <RenderImageAsset name={'humburger.svg'} className='menu-item selected' /> : menuItemsRender}
-		</GradientBase>
+		<>
+			<GradientBase className={`menu ${deviceMode || ''}`} borderSize='2' borderRadius='290px' innerTransparent>
+				{deviceMode === 'mobile' ? (
+					<RenderImageAsset name={'humburger.svg'} onClick={openDialog} className='menu-item selected' />
+				) : (
+					menuItemsRender
+				)}
+			</GradientBase>
+			{deviceMode === 'mobile' && (
+				<dialog
+					className='mobile-menu-dialog slide-down'
+					ref={dialogRef}
+					onClick={event => {
+						dialogClsoeByBackdrop(dialogRef, event);
+					}}>
+					<div className='mobile-menu'>
+						<RenderImageAsset name='close.svg' className='close-icon' onClick={() => dialogRef.current.close()} />
+						<div className='items'>
+							{menuItems.map((item, index) => {
+								return (
+									<div
+										key={index}
+										onClick={() => {
+											navigate(item.page);
+											dialogRef.current.close();
+										}}>
+										{item.name}
+									</div>
+								);
+							})}
+						</div>
+					</div>
+				</dialog>
+			)}
+		</>
 	);
 };
 export default Menu;
