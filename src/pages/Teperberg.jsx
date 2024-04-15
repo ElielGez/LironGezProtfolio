@@ -104,7 +104,7 @@ const Teperberg = () => {
 							<div style={{ fontSize: '27px', fontWeight: '400' }}>Menu - Assistant Regular 27</div>
 							<div style={{ fontSize: '18px', fontWeight: '600' }}>Keep reading Assistant SemiBold 18</div>
 						</div>
-						<RenderImageAsset style={{ objectFit: 'contain', width: '300px' }} name={'style-guide-teperberg.png'} />
+						<RenderImageAsset style={{ objectFit: 'contain', maxWidth: '300px' }} name={'style-guide-teperberg.png'} />
 						<div style={{ flex: 0.5 }}></div>
 					</div>
 				</div>

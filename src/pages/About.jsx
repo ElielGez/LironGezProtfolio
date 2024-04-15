@@ -11,7 +11,7 @@ const About = () => {
 			<div className='intro texts padding-left'>
 				{deviceMode === 'desktop' && <RenderImageAsset name={'spark2.svg'} className='big-title-with-spark' />}
 				<h1>About Me</h1>
-				<h4 className='long-text' style={{ '--n': '800' }}>{`Hi, i’m Liron.
+				<h5 className='long-text' style={{ '--n': '800' }}>{`Hi, i’m Liron.
                 UX/UI designer based in Israel.
 
 Design for the magic of a user-first experience, combined with clean and
@@ -25,7 +25,7 @@ I’m always striving to improve my skills and stay up-to-date with the latest d
 
 I believe that great design can have a positive impact on people's lives, and I’m grateful to be a part of this exciting and constantly evolving field.
 
-I’m highly motivated and looking to join a team who shares the same passion as I do.`}</h4>
+I’m highly motivated and looking to join a team who shares the same passion as I do.`}</h5>
 				<ContactMeButton />
 			</div>
 			<RenderImageAsset name={'about.png'} className='illustration1' />

@@ -59,6 +59,7 @@ const Home = () => {
 		{
 			title: 'Teperberg',
 			text: 'Vision collection by Teperberg winery',
+			subtext: '*Redesign',
 			backgroundImage: 'teperberg-scene.png',
 			onClick: () => navigate('/projects/teperberg'),
 		},
@@ -134,6 +135,7 @@ const Home = () => {
 								<RenderImageAsset className='bubble-icon' name={`bubble${index + 1}.png`} />
 								<h2>{project.title}</h2>
 								<h5>{project.text}</h5>
+								{project.subtext && <h6>{project.subtext}</h6>}
 								{deviceMode !== 'desktop' && <RenderImageAsset className='press-icon' name={'press.svg'} />}
 								<div className={`anim-scene`}>
 									<RenderImageAsset name={project.backgroundImage} />

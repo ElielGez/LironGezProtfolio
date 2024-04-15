@@ -4,6 +4,7 @@ import Button from '../components/Button';
 import { useRef, useState } from 'react';
 import { dialogClsoeByBackdrop } from '../util/functions';
 import { useNavigate } from 'react-router-dom';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 const RecipeIt = () => {
 	const navigate = useNavigate();
@@ -95,22 +96,32 @@ const RecipeIt = () => {
 						<RenderImageAsset name={'spark1.svg'} />
 					</div>
 					<div className='findings'>
-						<div className='finding'>
-							<div className='title'>45+</div>
-							<h6>Uploading a recipe takes more than 45 minutes</h6>
-						</div>
-						<div className='finding'>
-							<RenderImageAsset className='title' name={'emoji.svg'} />
-							<h6>The difficulty in uploading the recipe is the long writing of the ingredients and preparation instructions.</h6>
-						</div>
-						<div className='finding'>
-							<div className='title'>96%</div>
-							<h6>96% of the users would like an app that makes the content accessible and is easy and convenient to operate.</h6>
-						</div>
-						<div className='finding'>
-							<RenderImageAsset className='title' name={'celebrate.svg'} />
-							<h6>Most users who share recipes do so as a hobby for their own enjoyment.</h6>
-						</div>
+						<AnimationOnScroll animateIn='animate__fadeInDown' animatePreScroll={false}>
+							<div className='finding'>
+								<div className='title'>45+</div>
+								<h6>Uploading a recipe takes more than 45 minutes</h6>
+							</div>
+						</AnimationOnScroll>
+						<AnimationOnScroll animateIn='animate__fadeInDown' animatePreScroll={false} delay={500}>
+							<div className='finding'>
+								<RenderImageAsset className='title' name={'emoji.svg'} />
+								<h6>The difficulty in uploading the recipe is the long writing of the ingredients and preparation instructions.</h6>
+							</div>
+						</AnimationOnScroll>
+
+						<AnimationOnScroll animateIn='animate__fadeInDown' animatePreScroll={false} delay={1000}>
+							<div className='finding'>
+								<div className='title'>96%</div>
+								<h6>96% of the users would like an app that makes the content accessible and is easy and convenient to operate.</h6>
+							</div>
+						</AnimationOnScroll>
+
+						<AnimationOnScroll animateIn='animate__fadeInDown' animatePreScroll={false} delay={1500}>
+							<div className='finding'>
+								<RenderImageAsset className='title' name={'celebrate.svg'} />
+								<h6>Most users who share recipes do so as a hobby for their own enjoyment.</h6>
+							</div>
+						</AnimationOnScroll>
 					</div>
 				</div>
 				<div className='section'>
@@ -119,18 +130,22 @@ const RecipeIt = () => {
 						<RenderImageAsset name={'spark1.svg'} />
 					</div>
 					<div className='persona-container'>
-						<div className='overlay-container'>
-							<div className='overlay' onClick={() => openDialog('persona-tomer.png')}>
-								<RenderImageAsset className='centered-absoulte' name={'magnifying.svg'} />
+						<AnimationOnScroll animateIn='animate__slideInLeft' duration={0.5} animatePreScroll={false}>
+							<div className='overlay-container'>
+								<div className='overlay' onClick={() => openDialog('persona-tomer.png')}>
+									<RenderImageAsset className='centered-absoulte' name={'magnifying.svg'} />
+								</div>
+								<RenderImageAsset style={{ width: '100%' }} name={'persona-tomer.png'} />
 							</div>
-							<RenderImageAsset name={'persona-tomer.png'} />
-						</div>
-						<div className='overlay-container'>
-							<div className='overlay' onClick={() => openDialog('persona-elizabeth.png')}>
-								<RenderImageAsset className='centered-absoulte' name={'magnifying.svg'} />
+						</AnimationOnScroll>
+						<AnimationOnScroll animateIn='animate__slideInRight' delay={500} duration={0.5} animatePreScroll={false}>
+							<div className='overlay-container'>
+								<div className='overlay' onClick={() => openDialog('persona-elizabeth.png')}>
+									<RenderImageAsset className='centered-absoulte' name={'magnifying.svg'} />
+								</div>
+								<RenderImageAsset style={{ width: '100%' }} name={'persona-elizabeth.png'} />
 							</div>
-							<RenderImageAsset name={'persona-elizabeth.png'} />
-						</div>
+						</AnimationOnScroll>
 					</div>
 				</div>
 				<div className='section'>
@@ -185,7 +200,7 @@ const RecipeIt = () => {
 							<div style={{ fontSize: '13px', fontWeight: '500' }}>Button text Manrope Medium 13</div>
 							<div style={{ fontSize: '12px', fontWeight: '400' }}>Body2 Manrope Regular 12</div>
 						</div>
-						<RenderImageAsset style={{ objectFit: 'contain', width: '300px' }} name={'style-guide-recipe-it.png'} />
+						<RenderImageAsset style={{ objectFit: 'contain', maxWidth: '300px' }} name={'style-guide-recipe-it.png'} />
 						<div style={{ flex: 0.5 }}></div>
 					</div>
 				</div>

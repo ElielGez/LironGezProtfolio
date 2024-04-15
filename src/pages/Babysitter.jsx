@@ -4,6 +4,7 @@ import Button from '../components/Button';
 import { useRef, useState } from 'react';
 import { dialogClsoeByBackdrop } from '../util/functions';
 import { useNavigate } from 'react-router-dom';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 const Babysitter = () => {
 	const navigate = useNavigate();
@@ -99,21 +100,27 @@ const Babysitter = () => {
 						<RenderImageAsset name={'spark1.svg'} />
 					</div>
 					<div className='findings'>
-						<div className='finding'>
-							<RenderImageAsset className='title' name={'location.svg'} />
-							<h6>Numerous people are unaware of local babysitters</h6>
-						</div>
-						<div className='finding'>
-							<RenderImageAsset className='title' name={'call-dismiss.svg'} />
-							<h6>Many times the babysitter cannot respond immediately when the parent requires a response urgently.</h6>
-						</div>
-						<div className='finding'>
-							<RenderImageAsset className='title' name={'verified.svg'} />
-							<h6>
-								People want a trustworthy and organized application that can display all necessary information and allow them to
-								select based on their preferences.
-							</h6>
-						</div>
+						<AnimationOnScroll animateIn='animate__fadeInDown' animatePreScroll={false}>
+							<div className='finding'>
+								<RenderImageAsset className='title' name={'location.svg'} />
+								<h6>Numerous people are unaware of local babysitters</h6>
+							</div>
+						</AnimationOnScroll>
+						<AnimationOnScroll animateIn='animate__fadeInDown' animatePreScroll={false} delay={500}>
+							<div className='finding'>
+								<RenderImageAsset className='title' name={'call-dismiss.svg'} />
+								<h6>Many times the babysitter cannot respond immediately when the parent requires a response urgently.</h6>
+							</div>
+						</AnimationOnScroll>
+						<AnimationOnScroll animateIn='animate__fadeInDown' animatePreScroll={false} delay={1000}>
+							<div className='finding'>
+								<RenderImageAsset className='title' name={'verified.svg'} />
+								<h6>
+									People want a trustworthy and organized application that can display all necessary information and allow them to
+									select based on their preferences.
+								</h6>
+							</div>
+						</AnimationOnScroll>
 						<div className='finding'></div>
 					</div>
 				</div>
@@ -123,18 +130,22 @@ const Babysitter = () => {
 						<RenderImageAsset name={'spark1.svg'} />
 					</div>
 					<div className='persona-container'>
-						<div className='overlay-container'>
-							<div className='overlay' onClick={() => openDialog('persona-tami.png')}>
-								<RenderImageAsset className='centered-absoulte' name={'magnifying.svg'} />
+						<AnimationOnScroll animateIn='animate__slideInLeft' duration={0.5} animatePreScroll={false}>
+							<div className='overlay-container'>
+								<div className='overlay' onClick={() => openDialog('persona-tami.png')}>
+									<RenderImageAsset className='centered-absoulte' name={'magnifying.svg'} />
+								</div>
+								<RenderImageAsset style={{ width: '100%' }} name={'persona-tami.png'} />
 							</div>
-							<RenderImageAsset name={'persona-tami.png'} />
-						</div>
-						<div className='overlay-container'>
-							<div className='overlay' onClick={() => openDialog('persona-noa.png')}>
-								<RenderImageAsset className='centered-absoulte' name={'magnifying.svg'} />
+						</AnimationOnScroll>
+						<AnimationOnScroll animateIn='animate__slideInRight' delay={500} duration={0.5} animatePreScroll={false}>
+							<div className='overlay-container'>
+								<div className='overlay' onClick={() => openDialog('persona-noa.png')}>
+									<RenderImageAsset className='centered-absoulte' name={'magnifying.svg'} />
+								</div>
+								<RenderImageAsset style={{ width: '100%' }} name={'persona-noa.png'} />
 							</div>
-							<RenderImageAsset name={'persona-noa.png'} />
-						</div>
+						</AnimationOnScroll>
 					</div>
 				</div>
 				<div className='section'>
@@ -183,7 +194,7 @@ const Babysitter = () => {
 							<div style={{ fontSize: '13px', fontWeight: '500' }}>Sub-H5 Manrope Medium 12</div>
 							<div style={{ fontSize: '18px', fontWeight: '600' }}>Notification Manrope SemiBold 18</div>
 						</div>
-						<RenderImageAsset style={{ objectFit: 'contain', width: '300px' }} name={'style-guide-babysitter.png'} />
+						<RenderImageAsset style={{ objectFit: 'contain', maxWidth: '300px' }} name={'style-guide-babysitter.png'} />
 						<div style={{ flex: 0.5 }}></div>
 					</div>
 				</div>
