@@ -48,10 +48,13 @@ const Menu = () => {
 			<div
 				key={item.name}
 				className={`menu-item ${
-					// isArray
-					// 	? item.page.some(page => page.includes(location.pathname) && location.pathname.length > 1)
-					// 	:
-					!isArray && location.pathname === item.page ? 'selected' : ''
+					(
+						isArray
+							? item.pages.some(item => item.value.includes(location.pathname) && location.pathname.length > 1)
+							: location.pathname === item.page
+					)
+						? 'selected'
+						: ''
 				}${isArray ? ' menu-select' : ''}`}
 				onClick={() => !isArray && navigate(item.page)}>
 				<span>
