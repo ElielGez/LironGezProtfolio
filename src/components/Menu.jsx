@@ -20,7 +20,7 @@ const menuItems = [
 				label: 'Recipe It',
 				value: '/projects/recipeit',
 			},
-			{ label: 'Babysitter', value: '/projects/babysitter' },
+			{ label: 'BabySitter', value: '/projects/babysitter' },
 			{ label: 'Teperberg', value: '/projects/teperberg' },
 		],
 	},

@@ -8,6 +8,7 @@ import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 const Babysitter = () => {
 	const navigate = useNavigate();
+	const [showCredit, setShowCredit] = useState(false);
 	const [selectedPersona, setSelectedPersona] = useState();
 	const dialogRef = useRef();
 	const openDialog = persona => {
@@ -18,7 +19,10 @@ const Babysitter = () => {
 		<div className='babysitter template1'>
 			<div className='intro padding-left'>
 				<RenderImageAsset name={'spark2.svg'} className='big-title-with-spark' />
-				<h1 className='title'>Babysitter</h1>
+				<h1 className='title' onDoubleClick={() => setShowCredit(!showCredit)}>
+					BabySitter
+				</h1>
+				{showCredit && <span>Credit to Or Gez</span>}
 				<h4 className='subtitle'>Secure app for searching a babysitter</h4>
 				<Button
 					onClick={() =>
