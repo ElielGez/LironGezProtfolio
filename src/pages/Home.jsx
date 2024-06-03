@@ -84,7 +84,8 @@ const Home = () => {
 				<RenderImageAsset name={'star.svg'} />
 			</div>
 			<div className='line'></div>
-			<div className='process padding-left'>
+			<div className='process padding-left'></div>
+			{/* <div className='process padding-left'>
 				<div className='title-with-icon'>
 					<h3>My process to design</h3>
 					<RenderImageAsset name={'spark1.svg'} />
@@ -118,7 +119,7 @@ const Home = () => {
 						);
 					})}
 				</div>
-			</div>
+			</div> */}
 			<div className='projects padding-left'>
 				<div className='title-with-icon'>
 					<h3>Some Featured projects</h3>

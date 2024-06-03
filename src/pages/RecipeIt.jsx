@@ -181,7 +181,7 @@ const RecipeIt = () => {
 					<h4>Light mode</h4>
 					<RenderImageAsset className='width80' name={'light-mode-recipe-it.png'} />
 				</div>
-				<div className='section'>
+				{/* <div className='section'>
 					<div className='title-with-icon'>
 						<h3>Style guide</h3>
 						<RenderImageAsset name={'spark1.svg'} />
@@ -203,7 +203,7 @@ const RecipeIt = () => {
 						<RenderImageAsset style={{ objectFit: 'contain', maxWidth: '300px' }} name={'style-guide-recipe-it.png'} />
 						<div style={{ flex: 0.5 }}></div>
 					</div>
-				</div>
+				</div> */}
 				<div className='section'>
 					<div className='title-with-icon'>
 						<h3>Thanks for watching</h3>
